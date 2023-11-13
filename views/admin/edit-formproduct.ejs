@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Actualizar Producto</title>
+</head>
+<body>
+    <h1>Actualizar Producto</h1>
+    <form action="/edit-product/<%= producto._id %>" method="POST">
+        <!-- Campos de edición de producto -->
+        <input type="text" name="name" value="<%= producto.name %>" placeholder="Nombre">
+        <input type="number" name="price" value="<%= producto.price %>" placeholder="Precio">
+        <input type="text" name="company" value="<%= producto.company %>" placeholder="Compañía">
+        <input type="checkbox" name="featured" <% if (producto.featured) { %>checked<% } %>>
+        <input type="number" name="raiting" value="<%= producto.raiting %>" placeholder="Rating">
+        <button type="submit">Actualizar Producto</button>
+    </form>

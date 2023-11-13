@@ -1,0 +1,7 @@
+<!-- views/user/create-cart.ejs -->
+<h1>Agregar al Carrito</h1>
+<p><%= product.name %> - $<%= product.price %></p>
+<form action="/add-to-cart/<%= product._id %>" method="POST">
+  <button type="submit">Agregar al Carrito</button>
+</form>
+<a href="/">Volver a la lista de productos</a>

@@ -1,0 +1,8 @@
+express web site
+npm init -y   crea el archivo json
+nodemoon se instala una sola ves y queda global
+npm i bcrypt mongoose express-session ejs cookie-parser jsonwebtoken method-override
+
+npm i dotenv
+npm i express
+

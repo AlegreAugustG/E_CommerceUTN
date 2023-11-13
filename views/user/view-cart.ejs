@@ -1,0 +1,32 @@
+<h1>Carrito</h1>
+
+<% for (const cart of carts) { %>
+  <ul>
+    <% cart.items.forEach(item => { %>
+      <li>
+        <%= item.product.name %> - Cantidad: <%= item.quantity %> - Subtotal: $<%= item.subtotal %>
+      </li>
+
+      <form action="/update-cart/<%= cart._id %>" method="POST">
+        <input type="hidden" name="productId" value="<%= item.product._id %>"> 
+        <input type="number" name="quantity" placeholder="Cantidad">      
+        <button type="submit" name="action" value="increase">+</button>
+        <button type="submit" name="action" value="decrease">-</button> <br>
+        <button type="submit" name="action" value="empty-item">vaiar carrito</button>
+      </form>
+     
+    <% }); %>
+  </ul>
+
+  <form action="/remove-cart/<%= cart._id %>" method="POST">
+    <button type="submit">Eliminar Carrito</button>
+  </form>
+
+  <form action="">
+    <button type="submit" name="action" value="buy">Comprar Carrito</button>
+  </form>
+
+  <p><%= cart._id %></p>
+<% } %>
+
+<a href="/">Volver a la lista de productos</a>

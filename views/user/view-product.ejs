@@ -1,0 +1,13 @@
+<h1>Lista de Productos</h1>
+<ul>
+    <% productos.forEach(function(producto) { %>
+        <li><%= producto.name %>: $<%= producto.price %></li>
+ 
+        <form action="/add-to-cart/<%= producto._id %>" method="POST">
+            <button type="submit">Agregar al Carrito</button>
+          </form>
+          
+        
+    <% }); %>
+</ul>
+ 

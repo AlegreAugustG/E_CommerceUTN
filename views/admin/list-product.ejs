@@ -1,0 +1,16 @@
+
+<h1>Lista de Productos</h1>
+<ul>
+    <% productos.forEach(function(producto) { %>
+        <li><%= producto.name %>: $<%= producto.price %></li>
+        <form action="/edit-formproduct/<%= producto._id %>" method="get">
+            <button type="submit" name="accion" value="actualizar">Editar</button>
+        </form>
+        <form action="/list-product/<%= producto._id %>" method="POST">
+            <button type="submit" name="accion" value="eliminar">Eliminar</button>
+        </form>
+        
+    <% }); %>
+</ul>
+<button><a href="/create-formproduct">Crear Nuevo Producto</a></button>
+
