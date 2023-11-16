@@ -99,8 +99,6 @@ router.post('/remove-cart/:cartId', async (req, res) => {
   }
 });
 
-
-
 // Modificar carrito
 router.post('/update-cart/:cartId', async (req, res) => {
   const { action, quantity } = req.body;
@@ -126,36 +124,35 @@ router.post('/update-cart/:cartId', async (req, res) => {
     let itemQuantity = cart.items[productIndex].quantity;
     let itemSubtotal = cart.items[productIndex].subtotal;
 
+    // Parsea la cantidad a un número
+    const parsedQuantity = parseInt(quantity, 10);
+
+    // Verifica si la conversión fue exitosa
+    if (isNaN(parsedQuantity)) {
+      console.error('Cantidad no válida:', quantity);
+      return res.status(400).json({ error: 'Cantidad no válida' });
+    }
+
     // Calcular el total antes de la modificación
     const totalAntes = cart.total;
 
     switch (action) {
       case 'increase':
-        // Aumenta la cantidad
-        itemQuantity += 1;
+        // Aumenta la cantidad según el valor proporcionado o 1 si no se proporciona
+        itemQuantity += parsedQuantity > 0 ? parsedQuantity : 1;
         itemSubtotal = itemQuantity * price;
         break;
 
       case 'decrease':
-        // Disminuye la cantidad
-        if (itemQuantity > 1) {
-          itemQuantity -= 1;
-          itemSubtotal = itemQuantity * price;
-        } else {
-          // Si la cantidad es 1, elimina el elemento del carrito
-          // Puedes decidir si eliminar el producto completamente o solo reducir la cantidad a 0
-          
-          itemQuantity = 0;
-          itemSubtotal = 0;
-        }
+        // Disminuye la cantidad según el valor proporcionado o 1 si no se proporciona
+        itemQuantity -= parsedQuantity > 0 ? parsedQuantity : 1;
+
+        // Asegura que la cantidad no sea negativa
+        itemQuantity = Math.max(0, itemQuantity);
+        itemSubtotal = itemQuantity * price;
         break;
 
-      case 'empty-item':
  
-        //simplemente reduciré la cantidad a 0
-        itemQuantity = 0;
-        itemSubtotal = 0;
-        break;
 
       default:
         console.error('Acción no válida');
@@ -181,7 +178,6 @@ router.post('/update-cart/:cartId', async (req, res) => {
     res.status(500).json({ error: 'Error al procesar la solicitud' });
   }
 });
-
 
 
 module.exports = router;
