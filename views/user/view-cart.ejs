@@ -22,10 +22,10 @@
     <button type="submit">Eliminar Carrito</button>
   </form>
 
-  <form action="">
-    <button type="submit" name="action" value="buy">Comprar Carrito</button>
+  <form action="/checkout-form/<%= cart._id %>" method="GET">
+    <button type="submit" name="action" value="checkout">Comprar Carrito</button>
   </form>
-
+  
   <p><%= cart._id %></p>
 <% } %>
 

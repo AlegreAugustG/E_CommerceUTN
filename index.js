@@ -19,11 +19,10 @@ app.set('view engine','ejs')
 app.get('/', (req, res) => {
     res.render('index');
   });
-app.use('/',require('./server/routes/main'))
-app.use('/',require('./server/routes/product'))
-app.use('/',require('./server/routes/cart'))
-
-
+  app.use('/', require('./server/routes/main'))
+  app.use('/', require('./server/routes/product'))
+  app.use('/', require('./server/routes/cart'))
+  app.use('/', require('./server/routes/checkout'))
 app.listen(PORT,()=>{
     console.log('se conecto el servidor')
 })

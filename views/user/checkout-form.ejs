@@ -1,0 +1,21 @@
+<form action="/checkout/<%= cartId %>" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" name="name" required placeholder="Name">
+   
+  <label for="cardType">Card Type:</label>
+    <select name="cardType" required>
+      <option value="credit">Credit Card</option>
+      <option value="debit">Debit Card</option>
+    </select>
+  
+    <label for="cardNumber">Card Number:</label>
+    <input type="text" name="cardNumber" required placeholder="Card Number">
+  
+  <label for="expireDate">Expiration Date:</label>
+    <input type="text" name="expireDate" required placeholder="Expiration Date">
+  
+    <label for="CVV">CVV:</label>
+    <input type="text" name="CVV" required placeholder="CVV">
+  
+    <button type="submit">Submit Payment</button>
+  </form>

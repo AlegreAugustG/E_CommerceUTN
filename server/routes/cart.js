@@ -1,8 +1,8 @@
 // routes/cart.js
 const express = require('express');
 const router = express.Router();
-const Carritos = require('../models/carts');
 const Productos = require('../models/products');
+const Carritos = require('../models/carts');
 
 // Rutas para CRUD de carritos
 

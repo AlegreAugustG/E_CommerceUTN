@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 
-const checkoutSchema = new mongoose.Schema({
-    userId: String, // Referencia al usuario que realizó la compra
-    shippingInfo: {
-        address: String,
+const checkoutsSchema = new mongoose.Schema({
+    cart: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Carts', // Referencia al modelo 'Cart'
+        required: true,
     },
     paymentInfo: {
         name: String,
@@ -13,4 +14,4 @@ const checkoutSchema = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model('Checkout', checkoutSchema);
+module.exports = mongoose.model('Checkouts', checkoutsSchema);
