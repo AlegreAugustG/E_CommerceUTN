@@ -1,0 +1,27 @@
+<!-- user/checkout-summary.ejs -->
+
+<h1>Resumen de Compra</h1>
+
+<h2>Datos del Checkout:</h2>
+<ul>
+  <li>ID del Checkout: <%= checkout._id %></li>
+  <li>Fecha de Creación: <%= checkout.createdAt %></li>
+  <!-- Otros datos del Checkout según tu esquema -->
+</ul>
+
+<h2>Detalle del Carrito Actualizado:</h2>
+<ul>
+  <% cart.items.forEach(item => { %>
+    <li>
+      <%= item.product.name %> - Cantidad: <%= item.quantity %> - Subtotal: $<%= item.subtotal %>
+    </li>
+  <% }); %>
+</ul>
+
+<h2>Total Actualizado del Carrito: $<%= cart.total %></h2>
+
+<form action="/create-sale/<%= checkout._id %>" method="POST">
+  <button type="submit">Confirmar Compra</button>
+</form>
+
+<a href="/">Volver a la Lista de Productos</a>

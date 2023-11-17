@@ -1,0 +1,13 @@
+<h1>Listado de Compras</h1>
+<ul>
+  <% for (const sale of sales) { %>
+    <li>
+      Compra ID: <%= sale._id %> - Fecha: <%= sale.createdAt %> <!-- Otra información según tu esquema -->
+    </li>
+  <% } %>
+</ul>
+
+<!-- view-sales.ejs -->
+<h1>Detalles de la Compra</h1>
+<p>Compra ID: <%= sale._id %></p>
+<p>Fecha: <%= sale.createdAt %></p>

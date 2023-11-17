@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
   app.use('/', require('./server/routes/product'))
   app.use('/', require('./server/routes/cart'))
   app.use('/', require('./server/routes/checkout'))
+  app.use('/', require('./server/routes/sale'))
 app.listen(PORT,()=>{
     console.log('se conecto el servidor')
 })

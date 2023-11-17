@@ -1,0 +1,15 @@
+<h1>Resumen de Compra</h1>
+
+<ul>
+  <% cart.items.forEach(item => { %>
+    <li>
+      Producto: <%= item.product.name %> - Cantidad: <%= item.quantity %> - Subtotal: $<%= item.subtotal %>
+    </li>
+  <% }); %>
+</ul>
+
+<p>Total del Carrito: $<%= cart.total %></p>
+
+<form action="/confirmar-compra/<%= checkout._id %>" method="POST">
+  <button type="submit" name="confirmar-compra">Confirmar Tarjeta</button>
+</form>
